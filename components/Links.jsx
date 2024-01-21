@@ -36,12 +36,13 @@ const Links = () => {
   const router = useRouter();
   const pathname = usePathname();
   const [user, setUser] = useState();
+  const [userVer, setUserVer] = useState();
   const onLogout = async () => {
     try {
       await axios.get("/api/users/logout");
       // toast.success("Logout Succesfull");
       // router.push("/signin");
-      setUser(0);
+      setUserVer(0);
 
     } catch (error) {
       console.log(error.message);
@@ -51,14 +52,15 @@ const Links = () => {
   const fetchUser = async () => {
     const response = await axios.get("/api/users/userData");
     if (response?.data?.data == 0) {
-      setUser(0);
+      setUserVer(0);
     } else if (response?.data?.status == 200) {
       setUser(response?.data?.data);
+      setUserVer(1);
     } else {
       try {
         const res = await axios.get("/api/users/logout");
         // router.push("/signin");
-        setUser(0);
+        setUserVer(0);
 
         // toast.success('Logout Succesfull');
       } catch (error) {
@@ -138,7 +140,7 @@ const Links = () => {
           </div>
         ))}
       </motion.div>
-      {user === 0 ? (
+      {userVer === 0 ? (
         <div className="h-[3rem]   absolute top-[74%] bg-red-500 px-[1.6rem] py-[0.6rem] font-semibold hover:bg-red-600   text-white rounded-xl flex cursor-pointer left-[38%]  z-[50]" onClick={()=>router.push("/signin")}>
           Login
         </div>

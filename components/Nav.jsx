@@ -16,6 +16,7 @@ const links = [
 
 const Nav = () => {
   const [user,setUser]=useState();
+  const [userVer,setUserVer]=useState();
   const fetchProduct=(e)=>{
     e.preventDefault();
     router.push(`/searchProduct/${searchText}`)
@@ -23,16 +24,17 @@ const Nav = () => {
   const fetchUser=async()=>{
     const response=await axios.get("/api/users/userData");
     if(response?.data?.data==0){
-      setUser(0);
+      setUserVer(0);
     }
     else if(response?.data?.status==200){
-      setUser(response?.data?.data)
+      setUser(response?.data?.data);
+      setUserVer(1);
     }
     else{
       try {
         const res=await axios.get('/api/users/logout');
         // router.push("/signin");
-        setUser(0);
+        setUserVer(0);
         // toast.success('Logout Succesfull');
     } catch (error) {
         console.log(error.message);
@@ -121,7 +123,7 @@ const Nav = () => {
         </div>
         <div className="flex  items-center  gap-2">
           
-          {user===0?(<>
+          {userVer==0?(<>
             <button className="bg-red-500 px-[1.6rem] py-[0.6rem] font-semibold hover:bg-red-600   text-white rounded-xl cursor-pointer flex " onClick={()=>router.push("/signin")} >
             Login
           </button>
