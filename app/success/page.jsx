@@ -4,7 +4,13 @@ import React from 'react'
 
 const page = () => {
   const router=useRouter();
-  localStorage.removeItem('cart');
+  useEffect(() => {
+    // Check if the code is running on the client side
+    if (typeof window !== 'undefined') {
+      // Use localStorage only in the browser environment
+      localStorage?.removeItem('cart');
+    }
+  }, []);
   return (
     <div className="flex flex-col gap-[1rem] min-h-[90vh] items-center justify-center ">
             <h3 className="font-bold text-[4rem] mb-[-1rem] text-[#A2FF86]">Congrats</h3>
