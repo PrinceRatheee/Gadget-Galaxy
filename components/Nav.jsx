@@ -31,7 +31,8 @@ const Nav = () => {
     else{
       try {
         const res=await axios.get('/api/users/logout');
-        router.push("/signin");
+        // router.push("/signin");
+        setUser(0);
         // toast.success('Logout Succesfull');
     } catch (error) {
         console.log(error.message);

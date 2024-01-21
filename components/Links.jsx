@@ -39,8 +39,10 @@ const Links = () => {
   const onLogout = async () => {
     try {
       await axios.get("/api/users/logout");
-      toast.success("Logout Succesfull");
-      router.push("/signin");
+      // toast.success("Logout Succesfull");
+      // router.push("/signin");
+      setUser(0);
+
     } catch (error) {
       console.log(error.message);
       toast.error(error.message);
