@@ -138,7 +138,7 @@ const Links = () => {
           </div>
         ))}
       </motion.div>
-      {user == 0 ? (
+      {user === 0 ? (
         <div className="h-[3rem]   absolute top-[74%] bg-red-500 px-[1.6rem] py-[0.6rem] font-semibold hover:bg-red-600   text-white rounded-xl flex cursor-pointer left-[38%]  z-[50]" onClick={()=>router.push("/signin")}>
           Login
         </div>

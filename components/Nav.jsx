@@ -121,7 +121,7 @@ const Nav = () => {
         </div>
         <div className="flex  items-center  gap-2">
           
-          {user==0?(<>
+          {user===0?(<>
             <button className="bg-red-500 px-[1.6rem] py-[0.6rem] font-semibold hover:bg-red-600   text-white rounded-xl cursor-pointer flex " onClick={()=>router.push("/signin")} >
             Login
           </button>
