@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 
-
 const variants = {
   open: {
     transition: {
@@ -80,26 +79,29 @@ const Links = () => {
       </div>
       <motion.div className="links" variants={variants}>
         {" "}
-        
         {links.map((link, idx) => (
           <div key={idx} className="lg:relative ">
             {pathname === link.href ? (
-              <motion.a
-                className="text-lg font-semibold text-red-500"
-                href={link.href}
-                variants={itemvariants}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {link.name}
-              </motion.a>
+              <Link href={link.href}>
+                <motion.p
+                  className="text-lg font-semibold text-red-500"
+                  
+                  variants={itemvariants}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {link.name}
+                </motion.p>
+              </Link>
             ) : (
-              <motion.a
-                href={link.href}
-                className="text-lg font-semibold text-gray-600 transition duration-100 hover:text-orange-400"
-              >
-                {link.name}
-              </motion.a>
+              <Link href={link.href}>
+                <motion.p
+                 
+                  className="text-lg font-semibold text-gray-600 transition duration-100 hover:text-orange-400"
+                >
+                  {link.name}
+                </motion.p>
+              </Link>
             )}
           </div>
         ))}

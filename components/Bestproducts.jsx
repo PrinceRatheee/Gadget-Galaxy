@@ -46,7 +46,7 @@ const Bestproducts = () => {
   return (
     <>
       <div className="flex justify-center text-[2.3rem] anton-font font-[800] mb-[2rem]">
-        Trending Products
+       Best Seller Products
       </div>
       <div className="flex justify-center w-[80%] overflow-hidden container mb-[2rem]">
         <Swiper
