@@ -13,11 +13,11 @@ export async function POST(req) {
             line_items:product.map(item=>{
                 return{
                     price_data:{
-                        currency:'inr',
+                        currency:'usd',
                         product_data:{
                             name:item.name
                         },
-                        unit_amount:(item.price*100)
+                        unit_amount:item.price
                     },
                     quantity:qty
 

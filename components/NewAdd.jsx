@@ -75,7 +75,7 @@ const NewAdd = () => {
                   <div>
                     <h1 className="font-bold text-[1.3rem] ">{product.name}</h1>
                     <p className="font-bold text-[1rem]">
-                      ₹{product.price}{" "}
+                    ${((product?.price)/80).toFixed(2)}{" "}
                       <span className="text-[#68d2c7] text-[0.9rem]">
                         60%off
                       </span>

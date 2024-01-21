@@ -1,10 +1,9 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
-import toast from "react-hot-toast";
+
 import Sidebar from "./Sidebar/Sidebar"
 const links = [
   { name: "Home", href: "/" },
@@ -15,46 +14,14 @@ const links = [
 ];
 
 const Nav = () => {
-  const [user,setUser]=useState();
-  const [userVer,setUserVer]=useState();
+  
+  
   const fetchProduct=(e)=>{
     e.preventDefault();
     router.push(`/searchProduct/${searchText}`)
   }
-  const fetchUser=async()=>{
-    const response=await axios.get("/api/users/userData");
-    if(response?.data?.data==0){
-      setUserVer(0);
-    }
-    else if(response?.data?.status==200){
-      setUser(response?.data?.data);
-      setUserVer(1);
-    }
-    else{
-      try {
-        const res=await axios.get('/api/users/logout');
-        // router.push("/signin");
-        setUserVer(0);
-        // toast.success('Logout Succesfull');
-    } catch (error) {
-        console.log(error.message);
-        
-    }
-    }
-  }
-  useEffect(() => {
-    fetchUser();
-  },[] )
-  const onLogout=async()=>{
-    try {
-      await axios.get('/api/users/logout');
-      toast.success('Logout Succesfull');
-      // router.push("/signin");
-  } catch (error) {
-      console.log(error.message);
-      toast.error(error.message);
-  }
-  }
+  
+  
   const pathname = usePathname();
   const router = useRouter();
   const [searchText, setSearchText] = useState();
@@ -121,31 +88,7 @@ const Nav = () => {
             </span>
           </button>
         </div>
-        <div className="flex  items-center  gap-2">
-          
-          {userVer==0?(<>
-            <button className="bg-red-500 px-[1.6rem] py-[0.6rem] font-semibold hover:bg-red-600   text-white rounded-xl cursor-pointer flex " onClick={()=>router.push("/signin")} >
-            Login
-          </button>
-          </>):(<>
-            <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-6 h-6 cursor-pointer"
-          >
-            <path
-              fillRule="evenodd"
-              d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
-              clipRule="evenodd"
-            />
-          </svg>
-          <h2 className="w-[5.5rem] text-red-600 cursor-pointer">{user?.username}</h2>
-          <button className="bg-red-500 px-[1.6rem] py-[0.6rem] font-semibold hover:bg-red-600   text-white rounded-xl cursor-pointer flex " onClick={()=>onLogout()}>
-            Logout
-          </button>
-          </>)}
-        </div>
+        
       </div>
       <div className=" items-center   xl:hidden flex   ">
         <div className="flex items-center pt-[6rem]">

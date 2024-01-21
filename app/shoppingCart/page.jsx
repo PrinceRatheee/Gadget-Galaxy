@@ -51,10 +51,10 @@ const page = () => {
   const handleCheckout = async () => {
     try {
      const sendData={cart};
-     const response=await axios.get("/api/users/address");
+    //  const response=await axios.get("/api/users/address");
     //  console.log("response----",response);
 
-     if(response?.data?.data?.address.length>0){
+    
 
        const data=await axios.post("/api/checkout",sendData);
       //  console.log(data,"daaataa");
@@ -64,10 +64,7 @@ const page = () => {
        else{
          router.push("/failure")
        }
-     }
-     else{
-      router.push("/address");
-     }
+    
     } catch (error) {
       console.log(error,"error in frontend checkout");
 
@@ -146,7 +143,7 @@ const page = () => {
 
                 <h3 className="font-semibold text-[1.3rem]">Total Price</h3>
                 <h3 className="font-semibold text-[1.1rem]">
-                  ₹ {item[0].price * item[1].quantity}
+                 ${((item[0].price * item[1].quantity)/100).toFixed(2)}
                 </h3>
               </div>
               <h3
@@ -162,7 +159,7 @@ const page = () => {
         {cart.length > 0 ? (
           <>
             <h1 className="text-end px-[4.5rem] text-[1.2rem] mt-[1rem]">
-              Total Price: <span className="font-semibold">₹ {price}</span>
+              Total Price: <span className="font-semibold">${((price)/100).toFixed(2)}</span>
             </h1>
 
             <div className="flex justify-end my-[1rem]">

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Link from "next/link";
-import Image from "next/image";
+
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -76,18 +75,14 @@ const Related = ({ category }) => {
                         className="w-[25rem]"
                       />
                     </div>
-                    <div className="bg-[#fcc50b] justify-center items-center py-[0.2rem] w-[70%] mx-auto relative bottom-[1.4rem] border-solid border-[3px] rounded-full mb-[-20px]">
-                      <p className="text-center text-bold text-[0.8rem]">
-                        Boat Signature Sound
-                      </p>
-                    </div>
+                    
                     <div className="flex justify-between px-[1rem]">
                       <div>
                         <h1 className="font-bold text-[1.3rem] ">
                           {product.name}
                         </h1>
                         <p className="font-bold text-[1rem]">
-                          ₹{product.price}{" "}
+                          ${((product?.price)/100).toFixed(2)} {" "}
                           <span className="text-[#68d2c7] text-[0.9rem]">
                             60%off
                           </span>

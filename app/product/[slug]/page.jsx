@@ -112,10 +112,10 @@ const page = ({ params }) => {
           <div className="mb-4">
             <div className="flex items-end gap-2 mb-2">
               <span className="text-1xl font-bold text-gray-800 md:text-3xl">
-                ₹{productData?.price}
+                 ${((productData?.price)/100).toFixed(2)}
               </span>
               <span className="mb-0.5 text-red-500 line-through">
-                ${productData?.price + 500}
+                ${(((productData?.price)/100) + 23).toFixed(2)}
               </span>
             </div>
             <span className="text-sm text-gray-500"> Inc. all GST</span>
