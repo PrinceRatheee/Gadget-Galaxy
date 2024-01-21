@@ -44,7 +44,7 @@ const Nav = () => {
   }
   useEffect(() => {
     fetchUser();
-  } )
+  },[] )
   const onLogout=async()=>{
     try {
       await axios.get('/api/users/logout');

@@ -70,7 +70,7 @@ const Links = () => {
   };
   useEffect(() => {
     fetchUser();
-  });
+  },[]);
 
   const links = [
     { name: "Home", href: "/" },
