@@ -30,9 +30,9 @@ const Nav = () => {
     }
     else{
       try {
-        await axios.get('/api/users/logout');
+        const res=await axios.get('/api/users/logout');
+        router.push("/signin");
         // toast.success('Logout Succesfull');
-        router.push("/");
     } catch (error) {
         console.log(error.message);
         
@@ -41,12 +41,12 @@ const Nav = () => {
   }
   useEffect(() => {
     fetchUser();
-  },[] )
+  } )
   const onLogout=async()=>{
     try {
       await axios.get('/api/users/logout');
       toast.success('Logout Succesfull');
-      router.push("/");
+      router.push("/signin");
   } catch (error) {
       console.log(error.message);
       toast.error(error.message);
@@ -118,9 +118,9 @@ const Nav = () => {
             </span>
           </button>
         </div>
-        <div className="flex items-center  gap-2">
+        <div className="flex  items-center  gap-2">
           
-          {user===0?(<>
+          {user==0?(<>
             <button className="bg-red-500 px-[1.6rem] py-[0.6rem] font-semibold hover:bg-red-600   text-white rounded-xl cursor-pointer flex " onClick={()=>router.push("/signin")} >
             Login
           </button>
